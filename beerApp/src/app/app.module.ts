@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import {BeerModule} from "./beer/beer.module";
+import {BreweryModule} from "./brewery/brewery.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BeerModule,
+    BreweryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
