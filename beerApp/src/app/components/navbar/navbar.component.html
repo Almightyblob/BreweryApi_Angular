@@ -1,1 +1,11 @@
-<p>navbar works!</p>
+<div class="navbar">
+  <h4 (click)="onBrewerySearch()">BREWERIES</h4>
+  <h4 (click)="onBeerSearch()">BEERS</h4>
+</div>
+<div class="navbar" [@divState]="state" *ngIf="brewerySearchOn">
+  <p>BREWERY FORM</p>
+</div>
+<div class="navbar" [@divState]="state" *ngIf="beerSearchOn">
+  <p>BEER FORM</p>
+</div>
+<p>{{state}}</p>
