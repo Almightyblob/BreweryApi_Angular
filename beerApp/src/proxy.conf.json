@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://sandbox-api.brewerydb.com/v2",
+    "secure": false
+  }
+}
