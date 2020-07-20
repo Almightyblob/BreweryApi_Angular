@@ -1,3 +1,7 @@
-<div *ngFor="let beer of (beers$ | async)">
+<div *ngFor="let searchData of (searchData$ | async)">
+  <p>{{searchData.numberOfPages}}</p>
+</div>
+
+<div *ngFor="let beer of (beers$ | async); let i = index" (click)="onGoToBeer(i)">
   <p>{{beer.name}}</p>
 </div>

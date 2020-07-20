@@ -3,6 +3,7 @@ import {BeerService} from "../beer.service";
 import {BeerModel} from "../../models/beer.model";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-beerlist',
@@ -12,13 +13,19 @@ import {map} from "rxjs/operators";
 export class BeerlistComponent implements OnInit {
 
   beers$: Observable<BeerModel[]>
+  searchData$
 
-  constructor(private beerService: BeerService) { }
+
+  constructor(private beerService: BeerService, private router: Router) { }
 
   ngOnInit(): void {
     this.beers$ = this.beerService.beers$
+    this.searchData$ = this.beerService.searchData$
   }
 
-
+  onGoToBeer(index){
+    this.beerService.getBeerByIndex(index);
+    this.router.navigate(['detail'])
+  }
 
 }

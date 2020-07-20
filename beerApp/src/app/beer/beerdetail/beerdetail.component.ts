@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BeerModel} from "../../models/beer.model";
+import {Observable} from "rxjs";
+import {BeerService} from "../beer.service";
 
 @Component({
   selector: 'app-beerdetail',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeerdetailComponent implements OnInit {
 
-  constructor() { }
+  beer$: Observable<BeerModel[]>;
+
+  constructor(private beerService: BeerService) { }
 
   ngOnInit(): void {
+    this.beer$ = this.beerService.beer$
   }
 
 }
