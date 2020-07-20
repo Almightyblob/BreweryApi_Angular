@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+import {BreweryModel} from "../../models/brewery.model";
+import {BreweryService} from "../brewery.service";
 
 @Component({
   selector: 'app-brewerylist',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrewerylistComponent implements OnInit {
 
-  constructor() { }
+  breweries$: Observable<BreweryModel[]>
+
+  constructor(private breweryService: BreweryService) { }
 
   ngOnInit(): void {
+    this.breweries$ = this.breweryService.breweries$
   }
 
 }

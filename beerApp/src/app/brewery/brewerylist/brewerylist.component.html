@@ -1,1 +1,3 @@
-<p>brewerylist works!</p>
+<div *ngFor="let brewery of (breweries$ | async)">
+  <p>{{brewery.name}}</p>
+</div>
