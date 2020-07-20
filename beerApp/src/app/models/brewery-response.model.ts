@@ -1,4 +1,9 @@
 export interface BreweryResponseModel {
+  "currentPage": number,
+  "numberOfPages": number,
+  "totalResults": number,
+  "data": [
+    {
       "id": string,
       "name": string,
       "nameShortDisplay": string,
@@ -14,4 +19,6 @@ export interface BreweryResponseModel {
         "squareLarge": string
       }
     }
-
+  ],
+  "status": "success"
+}

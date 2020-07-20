@@ -1,4 +1,8 @@
-export interface BeerModel
+export interface BeerResponseModel {
+  "currentPage": number,
+  "numberOfPages": number,
+  "totalResults": number,
+  "data": [
     {
       "id": string,
       "name": string,
@@ -48,5 +52,6 @@ export interface BeerModel
         "createDate": string,
         "updateDate": string
       }
-    }
-
+    },
+  ]
+}
