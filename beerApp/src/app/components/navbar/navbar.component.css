@@ -1,0 +1,10 @@
+.navbar {
+  display: flex;
+  background-color: lightblue;
+  justify-content: space-around;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+}

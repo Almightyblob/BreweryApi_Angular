@@ -10,6 +10,9 @@ import {BeerModule} from "./beer/beer.module";
 import {BreweryModule} from "./brewery/brewery.module";
 import {BeerService} from "./beer/beer.service";
 import {BreweryService} from "./brewery/brewery.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ReactiveFormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -19,10 +22,13 @@ import {BreweryService} from "./brewery/brewery.service";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     BeerModule,
-    BreweryModule
+    BreweryModule,
+
   ],
   providers: [BeerService, BreweryService],
   bootstrap: [AppComponent]
