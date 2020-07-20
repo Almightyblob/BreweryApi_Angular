@@ -3,9 +3,19 @@
   <h4 (click)="onBeerSearch()">BEERS</h4>
 </div>
 <div class="navbar" [@divState]="state" *ngIf="brewerySearchOn">
-  <p>BREWERY FORM</p>
+  <form [formGroup]="breweryForm" class="form-group" >
+    <div class="form-field">
+      <label>Name</label>
+      <input formControlName="breweryName" name="breweryName" type="text">
+    </div>
+    <div class="form-field">
+      <label>Country</label>
+      <input formControlName="breweryCountry" type="text">
+    </div>
+    <button (click)="onBrewerySearch()">Search</button>
+  </form>
 </div>
 <div class="navbar" [@divState]="state" *ngIf="beerSearchOn">
   <p>BEER FORM</p>
 </div>
-<p>{{state}}</p>
+

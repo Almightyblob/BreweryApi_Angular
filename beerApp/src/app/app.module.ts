@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import {BeerModule} from "./beer/beer.module";
 import {BreweryModule} from "./brewery/brewery.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,10 +20,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     BeerModule,
-    BreweryModule
+    BreweryModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

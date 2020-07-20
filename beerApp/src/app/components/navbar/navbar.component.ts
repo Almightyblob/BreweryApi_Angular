@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {animate, style, transition, trigger} from "@angular/animations";
+import {FormBuilder, FormGroup} from "@angular/forms";
+
+import {BreweryService} from "../../brewery/"
 
 @Component({
   selector: 'app-navbar',
@@ -13,15 +16,22 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   })
 export class NavbarComponent implements OnInit {
 
+  beerForm: FormGroup;
+  breweryForm: FormGroup
   brewerySearchOn = false;
   beerSearchOn = false ;
   state = 'off'
 
+  constructor(private fb: FormBuilder, private breweryService: BreweryS) {
+    this.breweryForm = fb.group({
+      breweryName: [],
+      breweryCountry: [],
+    })
+  }
+
   onAnimate(){
     this.state == 'off' ? this.state = 'on' : this.state = 'off'
   }
-
-  constructor() { }
 
   ngOnInit(): void {
   }
