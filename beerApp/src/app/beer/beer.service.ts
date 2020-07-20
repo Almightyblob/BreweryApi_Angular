@@ -15,11 +15,12 @@ export class BeerService {
   }
 
   searchBeerName(keyword){
+    console.log(keyword);
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`).
     pipe(
       map(response => response.data),
       tap(response => this.beers$.next(response))
-    ).subscribe()
+    ).subscribe(response => console.log(response))
   }
 
 }

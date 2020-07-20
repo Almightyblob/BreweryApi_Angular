@@ -17,7 +17,6 @@ export class BeerlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.beers$ = this.beerService.beers$
-    this.beerService.loadBeers()
   }
 
 
