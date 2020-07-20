@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {animate, style, transition, trigger} from "@angular/animations";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
-import {BreweryService} from "../../brewery/"
+import {BreweryService} from "../../brewery/brewery.service"
+import {BeerService} from "../../beer/beer.service";
 
 @Component({
   selector: 'app-navbar',
@@ -22,10 +23,16 @@ export class NavbarComponent implements OnInit {
   beerSearchOn = false ;
   state = 'off'
 
-  constructor(private fb: FormBuilder, private breweryService: BreweryS) {
+  constructor(private fb: FormBuilder, private breweryService: BreweryService, private beerService: BeerService) {
     this.breweryForm = fb.group({
       breweryName: [],
       breweryCountry: [],
+    });
+
+    this.beerForm = fb.group({
+      beerName: [],
+      beerType: [],
+      beerCountry: [],
     })
   }
 
@@ -37,6 +44,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onBrewerySearch(){
+
     this.onAnimate()
     this.brewerySearchOn = true;
     this.beerSearchOn = false;

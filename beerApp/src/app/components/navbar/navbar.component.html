@@ -16,6 +16,20 @@
   </form>
 </div>
 <div class="navbar" [@divState]="state" *ngIf="beerSearchOn">
-  <p>BEER FORM</p>
+  <form [formGroup]="beerForm" class="form-group" >
+    <div class="form-field">
+      <label>Name</label>
+      <input formControlName="beerName" type="text">
+    </div>
+    <div class="form-field">
+      <label>Country</label>
+      <input formControlName="beerType" type="text">
+    </div>
+    <div class="form-field">
+      <label>Country</label>
+      <input formControlName="beerCountry" type="text">
+    </div>
+    <button (click)="onBeerSearch()">Search</button>
+  </form>
 </div>
 
