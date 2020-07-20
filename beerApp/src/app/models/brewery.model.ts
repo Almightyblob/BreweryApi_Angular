@@ -1,4 +1,4 @@
-export interface BreweryResponseModel {
+export interface BreweryModel {
       "id": string,
       "name": string,
       "nameShortDisplay": string,

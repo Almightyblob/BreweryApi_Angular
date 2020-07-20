@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {BeerService} from "../beer.service";
+import {BeerModel} from "../../models/beer.model";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-beerlist',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeerlistComponent implements OnInit {
 
-  constructor() { }
+  beers$: Observable<BeerModel[]>
+
+  constructor(private beerService: BeerService) { }
 
   ngOnInit(): void {
+    this.beers$ = this.beerService.beers$
+    this.beerService.loadBeers()
   }
+
+
 
 }
