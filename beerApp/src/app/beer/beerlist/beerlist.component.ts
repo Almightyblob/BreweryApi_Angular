@@ -30,4 +30,7 @@ export class BeerlistComponent implements OnInit {
     this.router.navigate(['detail'])
   }
 
+  beerPageChange(page){
+    this.beerService.beerPageChange(page)
+  }
 }
