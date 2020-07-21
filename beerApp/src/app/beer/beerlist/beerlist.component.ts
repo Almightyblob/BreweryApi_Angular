@@ -4,6 +4,8 @@ import {BeerModel} from "../../models/beer.model";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {BeerResponseModel} from "../../models/beer-response.model";
+import {SearchDataModel} from "../../models/searchData.model";
 
 @Component({
   selector: 'app-beerlist',
@@ -13,7 +15,7 @@ import {Router} from "@angular/router";
 export class BeerlistComponent implements OnInit {
 
   beers$: Observable<BeerModel[]>
-  searchData$
+  searchData$: Observable<SearchDataModel>
 
 
   constructor(private beerService: BeerService, private router: Router) { }
