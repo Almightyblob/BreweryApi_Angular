@@ -4,6 +4,7 @@ import {Injectable} from "@angular/core";
 import {Observable, Subject} from "rxjs";
 import {BreweryResponseModel} from "../models/brewery-response.model";
 import {map} from "rxjs/operators";
+import {BreweryLocationResponseModel} from "../models/brewery-location-response.model";
 
 
 @Injectable()
@@ -18,15 +19,18 @@ export class BreweryService {
       .pipe(
         map(response => response.data)
       )
-      .subscribe(breweries => this.breweries$.next(breweries))
+      .subscribe((breweries: BreweryModel[]) => this.breweries$.next(breweries))
   }
 
   breweryCountrySearch(searchWord){
-    this.http.get<BreweryResponseModel>(`/api/locations/?key=659d5c6b8f3d2447f090119e48202fdb&countryIsoCode=${searchWord}`)
+    this.http.get<BreweryLocationResponseModel>(`/api/locations/?key=659d5c6b8f3d2447f090119e48202fdb&countryIsoCode=${searchWord}`)
       .pipe(
-        map(response => response.data)
-      )
-      .subscribe(breweries => this.breweries$.next(breweries))
+        map(locationResponse => locationResponse.data.map(locations => locations.brewery)),
+        // filtering out duplicates provided by location search response
+        map( breweries => breweries.filter((v, i, a) => a.findIndex(t=>(t.id === v.id)) === i)
+          .sort((a, b) => a.name.localeCompare(b.name)),
+      ))
+      .subscribe(breweries => this.breweries$.next(breweries));
   }
 
 }

@@ -22,7 +22,8 @@ export class BeerService {
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`).
     pipe(
       tap(response => {
-        this.searchData$.next(delete response.data);
+        delete response.data;
+        this.searchData$.next(response);
       }),
       map(response => response.data),
       tap(response => {
