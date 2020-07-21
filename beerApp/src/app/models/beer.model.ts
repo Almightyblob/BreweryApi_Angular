@@ -8,7 +8,7 @@ export interface BeerModel
       "styleId": 98,
       "isOrganic": string,
       "isRetired": string,
-      "labels"?: {
+      "labels": {
         "icon": string,
         "medium?": string,
         "large": string,
@@ -20,7 +20,7 @@ export interface BeerModel
       "statusDisplay": string,
       "createDate": string,
       "updateDate": string,
-      "glass"?: {
+      "glass": {
         "id": number,
         "name": string,
         "createDate": string

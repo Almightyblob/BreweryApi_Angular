@@ -12,7 +12,7 @@ export interface BeerResponseModel {
       "styleId": 98,
       "isOrganic": string,
       "isRetired": string,
-      "labels"?: {
+      "labels": {
         "icon": string,
         "medium?": string,
         "large": string,
@@ -24,7 +24,7 @@ export interface BeerResponseModel {
       "statusDisplay": string,
       "createDate": string,
       "updateDate": string,
-      "glass"?: {
+      "glass": {
         "id": number,
         "name": string,
         "createDate": string
