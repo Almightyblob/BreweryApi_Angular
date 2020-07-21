@@ -7,6 +7,8 @@ import {BeerService} from "../../beer/beer.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {StyleModel} from "../../models/style.model";
+import {BreweryLocationResponseModel} from "../../models/brewery-location-response.model";
+import {BreweryLocationModel} from "../../models/brewery-location.model";
 
 @Component({
   selector: 'app-navbar',
@@ -26,6 +28,7 @@ export class NavbarComponent implements OnInit {
   beerSearchOn = false ;
   state = 'off'
   styles$: Observable<StyleModel[]>
+  countryCodes$: Observable<BreweryLocationModel[]>
 
   constructor(private fb: FormBuilder,
               private breweryService: BreweryService,
@@ -50,7 +53,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.styles$ = this.beerService.styles$
+    this.countryCodes$ = this.breweryService.countryCodes$
     this.beerService.getAllStyles()
+    this.breweryService.getCountryCodes()
 
   }
 

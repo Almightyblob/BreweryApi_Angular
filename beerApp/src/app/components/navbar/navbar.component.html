@@ -11,9 +11,10 @@
       </div>
       |
       <div class="form-field">
-        <label>Country</label>
-        <input formControlName="breweryCountry" type="text">
-        <button (click)="onBreweryCountrySearch()">Search</button>
+        <select formControlName="breweryCountry" (change)="onBreweryCountrySearch()">
+          <option value="">Select a Country</option>
+          <option *ngFor="let location of (countryCodes$ | async)" [value]="location.countryIsoCode">{{location.country.displayName}}</option>
+        </select>
       </div>
   </form>
 </div>
