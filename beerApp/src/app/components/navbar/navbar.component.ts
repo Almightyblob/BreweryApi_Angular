@@ -60,8 +60,13 @@ export class NavbarComponent implements OnInit {
     this.brewerySearchOn = false;
   }
 
-  onBrewerySearch(){
+  onBreweryNameSearch(){
     this.breweryService.breweryNameSearch(this.breweryForm.value.breweryName)
+    this.router.navigate(['/brewery'])
+  }
+
+  onBreweryCountrySearch(){
+    this.breweryService.breweryCountrySearch(this.breweryForm.value.breweryCountry)
     this.router.navigate(['/brewery'])
   }
 
