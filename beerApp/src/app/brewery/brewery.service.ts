@@ -1,7 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {BreweryModel} from "../models/brewery.model";
 import {Injectable} from "@angular/core";
-import {Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {BreweryResponseModel} from "../models/brewery-response.model";
 import {map} from "rxjs/operators";
 import {BreweryLocationResponseModel} from "../models/brewery-location-response.model";
@@ -9,7 +9,7 @@ import {BreweryLocationResponseModel} from "../models/brewery-location-response.
 
 @Injectable()
 export class BreweryService {
-  breweries$ = new Subject<BreweryModel[]>();
+  breweries$ = new BehaviorSubject<BreweryModel[]>([]);
 
   constructor(private http: HttpClient) {
   }
