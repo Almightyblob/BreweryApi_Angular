@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {BreweryService} from "../../brewery/brewery.service"
 import {BeerService} from "../../beer/beer.service";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {StyleModel} from "../../models/style.model";
 
 @Component({
   selector: 'app-navbar',
@@ -23,6 +25,7 @@ export class NavbarComponent implements OnInit {
   brewerySearchOn = false;
   beerSearchOn = false ;
   state = 'off'
+  styles$: Observable<StyleModel[]>
 
   constructor(private fb: FormBuilder,
               private breweryService: BreweryService,
@@ -46,6 +49,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.styles$ = this.beerService.styles$
+    this.beerService.getAllStyles()
+
   }
 
   openBreweryForm(){
@@ -70,8 +76,13 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/brewery'])
   }
 
-  onBeerSearch(){
+  onBeerNameSearch(){
     this.beerService.searchBeerName(this.beerForm.value.beerName);
+    this.router.navigate(['/beer'])
+  }
+
+  onBeerTypeSearch(){
+    this.beerService.searchBeerType(this.beerForm.value.beerType);
     this.router.navigate(['/beer'])
   }
 

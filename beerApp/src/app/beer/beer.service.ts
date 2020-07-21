@@ -44,7 +44,7 @@ export class BeerService {
   }
 
   searchBeerType(keyword){
-    this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`).
+    this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&styleId=${keyword}`).
     pipe(
       tap(response => {
         let responseCopy = {...response}

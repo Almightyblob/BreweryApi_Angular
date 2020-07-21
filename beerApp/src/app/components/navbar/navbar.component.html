@@ -22,18 +22,23 @@
     <div class="form-field">
       <label>Name</label>
       <input formControlName="beerName" type="text">
+      <button (click)="onBeerNameSearch()">Search</button>
     </div>
     |
     <div class="form-field">
       <label>Type</label>
-      <input formControlName="beerType" type="text">
+      <select formControlName="beerType" (change)="onBeerTypeSearch()">
+        <option value="">Select a type</option>
+        <option *ngFor="let style of (styles$ | async)" [value]="style.id">{{style.name}}</option>
+      </select>
     </div>
     |
     <div class="form-field">
       <label>Country</label>
       <input formControlName="beerCountry" type="text">
     </div>
-    <button (click)="onBeerSearch()">Search</button>
+
   </form>
 </div>
+
 
