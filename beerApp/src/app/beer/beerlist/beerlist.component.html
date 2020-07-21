@@ -1,7 +1,6 @@
 <div>
   <span>Matches found: {{(searchData$ | async).totalResults}}</span> |
-  <span>Pages: {{(searchData$ | async).numberOfPages}}</span> |
-  <span>Current Page: {{(searchData$ | async).currentPage}}</span> |
+  <span>Page: {{(searchData$ | async).currentPage}} of {{(searchData$ | async).numberOfPages}}</span> |
 </div>
 
 <div *ngFor="let beer of (beers$ | async); let i = index" (click)="onGoToBeer(i)">

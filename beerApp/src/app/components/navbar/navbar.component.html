@@ -27,7 +27,7 @@
     |
     <div class="form-field">
       <label>Type</label>
-      <select formControlName="beerType" (change)="onBeerTypeSearch()">
+      <select formControlName="beerStyle" (change)="onBeerStyleSearch()">
         <option value="">Select a type</option>
         <option *ngFor="let style of (styles$ | async)" [value]="style.id">{{style.name}}</option>
       </select>

@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
 
     this.beerForm = fb.group({
       beerName: [''],
-      beerType: [''],
+      beerStyle: [''],
       beerCountry: [''],
     })
   }
@@ -81,8 +81,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/beer'])
   }
 
-  onBeerTypeSearch(){
-    this.beerService.searchBeerType(this.beerForm.value.beerType);
+  onBeerStyleSearch(){
+    this.beerService.searchBeerStyle(this.beerForm.value.beerStyle);
     this.router.navigate(['/beer'])
   }
 

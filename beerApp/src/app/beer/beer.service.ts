@@ -28,35 +28,35 @@ export class BeerService {
   searchBeerName(keyword){
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`).
     pipe(
-      tap(response => {
-        let responseCopy = {...response}
+      tap(beerResponse => {
+        let responseCopy = {...beerResponse}
         delete responseCopy.data
         console.log(responseCopy)
         this.searchData$.next(responseCopy);
       }),
-      map(response => response.data),
-      tap(response => {
-        console.log(response)
-        this.beers = response
-        this.beers$.next(response)
+      map(beerResponse => beerResponse.data),
+      tap(beers => {
+        console.log(beers)
+        this.beers = beers
+        this.beers$.next(beers)
       })
     ).subscribe()
   }
 
-  searchBeerType(keyword){
+  searchBeerStyle(keyword){
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&styleId=${keyword}`).
     pipe(
-      tap(response => {
-        let responseCopy = {...response}
+      tap(beerResponse => {
+        let responseCopy = {...beerResponse}
         delete responseCopy.data
         console.log(responseCopy)
         this.searchData$.next(responseCopy);
       }),
-      map(response => response.data),
-      tap(response => {
-        console.log(response)
-        this.beers = response
-        this.beers$.next(response)
+      map(beerResponse => beerResponse.data),
+      tap(beers => {
+        console.log(beers)
+        this.beers = beers
+        this.beers$.next(beers)
       })
     ).subscribe()
   }

@@ -6,7 +6,6 @@ import {BreweryResponseModel} from "../models/brewery-response.model";
 import {map} from "rxjs/operators";
 import {BreweryLocationResponseModel} from "../models/brewery-location-response.model";
 
-
 @Injectable()
 export class BreweryService {
   breweries$ = new BehaviorSubject<BreweryModel[]>([]);
@@ -17,7 +16,7 @@ export class BreweryService {
   breweryNameSearch(searchWord){
     this.http.get<BreweryResponseModel>(`/api/breweries/?key=659d5c6b8f3d2447f090119e48202fdb&name=${searchWord}`)
       .pipe(
-        map(response => response.data)
+        map(breweryResponse => breweryResponse.data)
       )
       .subscribe((breweries: BreweryModel[]) => this.breweries$.next(breweries))
   }
