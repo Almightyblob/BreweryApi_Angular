@@ -15,7 +15,6 @@ export class BeerlistComponent implements OnInit {
   beers$: Observable<BeerModel[]>
   searchData$: Observable<SearchDataModel>
 
-
   constructor(private beerService: BeerService, private router: Router) { }
 
   ngOnInit(): void {

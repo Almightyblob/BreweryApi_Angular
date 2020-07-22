@@ -2,14 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-html {
-  background-image: linear-gradient(to bottom left, #23B9FA , #1E7BE6);
-  height: 100%
-}
 
 body {
+  background-color: #1d282d;
   font-family: Open Sans;
   font-weight: 300;
   font-size: 14px;
+  margin: 0;
 }
 

@@ -1,21 +1,27 @@
-<div>
+<div class="row">
   <div *ngIf="(searchData$ | async) as searchData">
-    <div *ngIf="searchData.totalResults">
-      <span>Matches found: {{searchData.totalResults}}</span> |
+    <div class="col-xs-12 searchData" *ngIf="searchData.totalResults">
+      <span>Matches found: {{searchData.totalResults}}</span>
+      <span class="divider"> | </span>
       <span *ngIf="+searchData.currentPage > +1">
-      <span
+      <span class="searchnavigation"
         (click)="this.beerPageChange(+searchData.currentPage -1)">
-        Previous page |</span>
+        Previous page </span>
+        <span class="divider"> | </span>
       </span>
-      <span>Page: {{searchData.currentPage}} of {{searchData.numberOfPages}}</span> |
+      <span>Page: {{searchData.currentPage}} of {{searchData.numberOfPages}}</span>
+      <span class="divider">|</span>
       <span *ngIf="+searchData.currentPage < +searchData.numberOfPages">
       <span
+        class="searchnavigation"
         (click)="this.beerPageChange(+searchData.currentPage + 1)">
         Next page </span>
       </span>
     </div>
   </div>
-  <div *ngFor="let beer of (beers$ | async); let i = index" (click)="onGoToBeer(i)">
-    <p>{{beer.name}}</p>
+  <div class="col-xs-8 col-xs-offset-1 beer-list">
+    <ul class="beer-item" *ngFor="let beer of (beers$ | async); let i = index" (click)="onGoToBeer(i)">
+      <li>{{beer.name}}</li>
+    </ul>
   </div>
 </div>

@@ -1,0 +1,63 @@
+.beercontainer{
+  margin-top: 30px;
+  padding: 0 50px 0 50px;
+  border-left: 1px #932d28 solid;
+  border-right: 1px #932d28 solid;
+}
+
+p {
+  color: white;
+}
+
+h2 {
+  color: #dd472c;
+  font-family: "Bebas Neue";
+  text-align: center;
+}
+
+h4 {
+  color: #932d28;
+  font-family: "Bebas Neue";
+  text-align: center;
+}
+
+h5 {
+  color: #dd472c;
+  font-family: "Open Sans";
+}
+
+hr {
+  border-top: 1px #932d28 solid;
+}
+
+.labelcontainer {
+  text-align: center;
+  margin: 20px;
+}
+
+.nolabel {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nolabel p{
+  font-family: "Bebas Neue";
+  font-size: 12px;
+  color: lightgrey;
+}
+
+img {
+  border: #932d28 1px solid;
+  padding: 5px;
+}
+
+.beerdetails p {
+  color: #dd472c;
+}
+.beerdetails span{
+  color: white;
+}
+
+
