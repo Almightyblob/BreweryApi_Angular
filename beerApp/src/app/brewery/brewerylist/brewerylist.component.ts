@@ -19,7 +19,7 @@ export class BrewerylistComponent implements OnInit {
     this.breweries$ = this.breweryService.breweries$
   }
 
-  goToBrewery(index){
+  goToBrewery(index: number){
     this.breweryService.getBreweryByIndex(index)
     this.router.navigate(['brewery/detail'])
   }

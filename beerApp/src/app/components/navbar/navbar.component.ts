@@ -1,24 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {animate, style, transition, trigger} from "@angular/animations";
 import {FormBuilder, FormGroup} from "@angular/forms";
-
 import {BreweryService} from "../../brewery/brewery.service"
 import {BeerService} from "../../beer/beer.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {StyleModel} from "../../models/style.model";
-import {BreweryLocationResponseModel} from "../../models/brewery-location-response.model";
 import {BreweryLocationModel} from "../../models/brewery-location.model";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  animations: [
-    trigger('divState', [
-      transition('void => *', [style({opacity: 0, height: 0}), animate(150)])
-    ])
-  ]
   })
 export class NavbarComponent implements OnInit {
 
@@ -46,10 +38,6 @@ export class NavbarComponent implements OnInit {
     })
   }
 
-  onAnimate(){
-    this.state == 'off' ? this.state = 'on' : this.state = 'off'
-  }
-
   ngOnInit(): void {
     this.styles$ = this.beerService.styles$
     this.countryCodes$ = this.breweryService.countryCodes$
@@ -59,13 +47,11 @@ export class NavbarComponent implements OnInit {
   }
 
   openBreweryForm(){
-    this.onAnimate()
     this.brewerySearchOn = true;
     this.beerSearchOn = false;
   }
 
   openBeerForm(){
-    this.onAnimate()
     this.beerSearchOn = true;
     this.brewerySearchOn = false;
   }

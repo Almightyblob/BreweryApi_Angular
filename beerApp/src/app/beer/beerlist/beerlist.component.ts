@@ -22,12 +22,12 @@ export class BeerlistComponent implements OnInit {
     this.searchData$ = this.beerService.searchData$
   }
 
-  onGoToBeer(index){
+  onGoToBeer(index: number){
     this.beerService.getBeerByIndex(index);
     this.router.navigate(['beer/detail'])
   }
 
-  beerPageChange(page){
+  beerPageChange(page: number | string){
     this.beerService.beerPageChange(page)
   }
 }

@@ -23,7 +23,7 @@ export class BeerService {
   constructor(private http: HttpClient) {
   }
 
-  searchBeerName(keyword){
+  searchBeerName(keyword: string){
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`).
     pipe(
       tap(beerResponse => {
@@ -41,7 +41,7 @@ export class BeerService {
     ).subscribe()
   }
 
-  searchBeerStyle(keyword){
+  searchBeerStyle(keyword: string){
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&styleId=${keyword}`).
     pipe(
       tap(beerResponse => {
@@ -58,7 +58,7 @@ export class BeerService {
     ).subscribe()
   }
 
-  getBreweryBeers(breweryId){
+  getBreweryBeers(breweryId: string){
     this.http.get<BeerResponseModel>(`/api/brewery/${breweryId}/beers?key=659d5c6b8f3d2447f090119e48202fdb`).
     pipe(
       tap(beerResponse => {
@@ -75,7 +75,7 @@ export class BeerService {
     ).subscribe()
   }
 
-  beerPageChange(nextPage){
+  beerPageChange(nextPage: string | number){
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&p=${nextPage}`).
     pipe(
       tap(beerResponse => {
@@ -99,7 +99,7 @@ export class BeerService {
   ).subscribe(styles => this.styles$.next(styles))
   }
 
-  getBeerByIndex(index){
+  getBeerByIndex(index: number){
     this.beer$.next([this.beers[index]])
   }
 

@@ -2,7 +2,7 @@
   <h4 (click)="openBreweryForm()">BREWERIES</h4>
   <h4 (click)="openBeerForm()">BEERS</h4>
 </div>
-<div class="search-bar" [@divState]="state" *ngIf="brewerySearchOn">
+<div class="search-bar" *ngIf="brewerySearchOn">
   <form [formGroup]="breweryForm" class="form-group">
       <div class="form-field">
         <label>Name </label>
@@ -19,7 +19,7 @@
       </div>
   </form>
 </div>
-<div class="search-bar" [@divState]="state" *ngIf="beerSearchOn">
+<div class="search-bar" *ngIf="beerSearchOn">
   <form [formGroup]="beerForm" class="form-group" >
     <div class="form-field">
       <label>Name </label>

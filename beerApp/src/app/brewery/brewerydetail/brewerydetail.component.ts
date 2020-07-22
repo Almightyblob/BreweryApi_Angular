@@ -22,7 +22,7 @@ export class BrewerydetailComponent implements OnInit {
     this.brewery$ = this.breweryService.brewery$
   }
 
-  goToBreweryBeers(id){
+  goToBreweryBeers(id: string){
     this.beerService.getBreweryBeers(id);
     this.router.navigate(['/beer'])
 

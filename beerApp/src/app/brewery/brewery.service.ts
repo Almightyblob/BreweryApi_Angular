@@ -17,7 +17,7 @@ export class BreweryService {
   constructor(private http: HttpClient) {
   }
 
-  breweryNameSearch(keyword){
+  breweryNameSearch(keyword: string){
     this.http.get<BreweryResponseModel>(`/api/breweries/?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`)
       .pipe(
         map(breweryResponse => breweryResponse.data)
@@ -28,7 +28,7 @@ export class BreweryService {
       })
   }
 
-  breweryCountrySearch(keyword){
+  breweryCountrySearch(keyword: string){
     this.http.get<BreweryLocationResponseModel>(`/api/locations/?key=659d5c6b8f3d2447f090119e48202fdb&countryIsoCode=${keyword}`)
       .pipe(
         map(locationResponse => locationResponse.data.map(locations => locations.brewery)),
@@ -42,7 +42,7 @@ export class BreweryService {
       });
   }
 
-  getBreweryByIndex(index){
+  getBreweryByIndex(index: number){
     this.brewery$.next([this.breweries[index]])
   }
 
