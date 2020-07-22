@@ -42,8 +42,7 @@ export class NavbarComponent implements OnInit {
 
     this.beerForm = fb.group({
       beerName: [''],
-      beerStyle: [''],
-      beerCountry: [''],
+      beerStyle: ['']
     })
   }
 

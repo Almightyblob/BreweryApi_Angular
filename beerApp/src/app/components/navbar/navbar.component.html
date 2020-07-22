@@ -33,12 +33,6 @@
         <option *ngFor="let style of (styles$ | async)" [value]="style.id">{{style.name}}</option>
       </select>
     </div>
-    |
-    <div class="form-field">
-      <label>Country</label>
-      <input formControlName="beerCountry" type="text">
-    </div>
-
   </form>
 </div>
 

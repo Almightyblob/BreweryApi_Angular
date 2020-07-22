@@ -7,16 +7,16 @@
   <div *ngIf="!beer.labels">
     <p >No image available</p>
   </div>
-  <p>Description: {{beer.style.description ? beer.style.description : "N/A"}}</p>
+  <p *ngIf="beer.style.description; else NA">Description: {{beer.style.description}}</p>
   <div>
     <p>ABV min: <span *ngIf="beer.style.abvMin ; else NA">{{beer.style.abvMin}}</span></p>
-    <p>ABV max: <span>{{beer.style.abvMax ? beer.style.abvMax: 'N/A' }}</span></p>
-    <p>FG min: <span>{{beer.style.fgMin ? beer.style.fgMin: 'N/A' }}</span></p>
-    <p>FG max: <span>{{beer.style.fgMax ? beer.style.fgMax: 'N/A' }}</span></p>
-    <p>IBU min: <span>{{beer.style.ibuMin ? beer.style.ibuMin: 'N/A' }}</span></p>
-    <p>IBU max: <span>{{beer.style.ibuMax ? beer.style.ibuMax: 'N/A' }}</span></p>
-    <p>SRM min: <span>{{beer.style.srmMin ? beer.style.srmMin: 'N/A' }}</span></p>
-    <p>SRM max: <span>{{beer.style.srmMax ? beer.style.srmMax: 'N/A' }}</span></p>
-    <template #NA> N/A</template>
+    <p>ABV max: <span *ngIf="beer.style.abvMax ; else NA">{{beer.style.abvMax }}</span></p>
+    <p>FG min: <span *ngIf="beer.style.fgMin ; else NA">{{beer.style.fgMin}}</span></p>
+    <p>FG max: <span *ngIf="beer.style.fgMax ; else NA">{{beer.style.fgMax}}</span></p>
+    <p>IBU min: <span *ngIf="beer.style.ibuMin ; else NA">{{beer.style.ibuMin}}</span></p>
+    <p>IBU max: <span *ngIf="beer.style.ibuMax ; else NA">{{beer.style.ibuMax}}</span></p>
+    <p>SRM min: <span *ngIf="beer.style.srmMin ; else NA">{{beer.style.srmMin}}</span></p>
+    <p>SRM max: <span *ngIf="beer.style.srmMax ; else NA">{{beer.style.srmMax}}</span></p>
   </div>
 </div>
+<ng-template #NA> <span>N/A</span></ng-template>
