@@ -20,8 +20,6 @@ export class BeerService {
   styles$ = new BehaviorSubject<StyleModel[]>([])
   private beers: BeerModel[];
 
-
-
   constructor(private http: HttpClient) {
   }
 

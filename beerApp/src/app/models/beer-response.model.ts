@@ -14,7 +14,7 @@ export interface BeerResponseModel {
       "isRetired": string,
       "labels": {
         "icon": string,
-        "medium?": string,
+        "medium": string,
         "large": string,
         "contentAwareIcon": string,
         "contentAwareMedium": string,

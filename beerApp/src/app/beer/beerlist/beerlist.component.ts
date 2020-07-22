@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BeerService} from "../beer.service";
 import {BeerModel} from "../../models/beer.model";
 import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
-import {BeerResponseModel} from "../../models/beer-response.model";
 import {SearchDataModel} from "../../models/searchData.model";
 
 @Component({
