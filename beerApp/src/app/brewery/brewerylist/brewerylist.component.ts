@@ -21,7 +21,7 @@ export class BrewerylistComponent implements OnInit {
 
   goToBrewery(index){
     this.breweryService.getBreweryByIndex(index)
-    this.router.navigate(['detail'])
+    this.router.navigate(['brewery/detail'])
   }
 
 }

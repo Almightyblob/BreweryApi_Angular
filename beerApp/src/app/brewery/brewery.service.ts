@@ -3,15 +3,16 @@ import {BreweryModel} from "../models/brewery.model";
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {BreweryResponseModel} from "../models/brewery-response.model";
-import {map, tap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {BreweryLocationResponseModel} from "../models/brewery-location-response.model";
+import {BeerResponseModel} from "../models/beer-response.model";
 
 @Injectable()
 export class BreweryService {
   breweries$ = new BehaviorSubject<BreweryModel[]>([]);
-  brewery$ = new BehaviorSubject<BreweryModel[]>([])
-  private breweries: BreweryModel[]
-  countryCodes$ = new BehaviorSubject([])
+  brewery$ = new BehaviorSubject<BreweryModel[]>([]);
+  private breweries: BreweryModel[];
+  countryCodes$ = new BehaviorSubject([]);
 
   constructor(private http: HttpClient) {
   }
@@ -19,10 +20,12 @@ export class BreweryService {
   breweryNameSearch(keyword){
     this.http.get<BreweryResponseModel>(`/api/breweries/?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`)
       .pipe(
-        map(breweryResponse => breweryResponse.data),
-        tap( breweries => this.breweries = breweries)
+        map(breweryResponse => breweryResponse.data)
       )
-      .subscribe((breweries: BreweryModel[]) => this.breweries$.next(breweries))
+      .subscribe((breweries: BreweryModel[]) => {
+        this.breweries = breweries
+        this.breweries$.next(breweries)
+      })
   }
 
   breweryCountrySearch(keyword){
@@ -32,8 +35,11 @@ export class BreweryService {
         // filtering out duplicates provided by location search response
         map( breweries => breweries.filter((v, i, a) => a.findIndex(t=>(t.id === v.id)) === i)
           .sort((a, b) => a.name.localeCompare(b.name))),
-        tap(breweries => this.breweries = breweries))
-      .subscribe(breweries => this.breweries$.next(breweries));
+     )
+      .subscribe(breweries => {
+        this.breweries = breweries
+        this.breweries$.next(breweries)
+      });
   }
 
   getBreweryByIndex(index){
@@ -49,7 +55,6 @@ export class BreweryService {
           .sort((a, b) => a.name.localeCompare(b.name)),
         ))
       .subscribe(countryCodes => {
-        console.log(countryCodes)
         this.countryCodes$.next(countryCodes)
       });
   }

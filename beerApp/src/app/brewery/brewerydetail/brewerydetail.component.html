@@ -1,1 +1,17 @@
 <p>brewerydetail works!</p>
+
+<div *ngFor="let brewery of (brewery$ | async)">
+  <h2>{{brewery.name}}</h2>
+  <p>{{brewery.established}}</p>
+  <div *ngIf="brewery.images && brewery.images.medium; else NA">
+    <img [src]="brewery.images.medium" alt="">
+  </div>
+  <p>{{brewery.description}}</p>
+  <p><a [href]="brewery.website" target="_blank">{{brewery.website}}</a></p>
+  <p (click)="goToBreweryBeers(brewery.id)">Beers by this brewery</p>
+</div>
+<ng-template #NA>
+  <div>
+    <p>No image available</p>
+  </div>
+</ng-template>

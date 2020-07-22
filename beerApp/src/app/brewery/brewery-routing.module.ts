@@ -6,7 +6,7 @@ import {BrewerydetailComponent} from "./brewerydetail/brewerydetail.component";
 
 const routes: Routes = [
   {path: '', component: BrewerylistComponent},
-  {path: 'detail/', component: BrewerydetailComponent}
+  {path: 'detail', component: BrewerydetailComponent}
   ]
 ;
 

@@ -25,7 +25,7 @@ export class BeerlistComponent implements OnInit {
 
   onGoToBeer(index){
     this.beerService.getBeerByIndex(index);
-    this.router.navigate(['detail'])
+    this.router.navigate(['beer/detail'])
   }
 
   beerPageChange(page){

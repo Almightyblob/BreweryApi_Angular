@@ -52,7 +52,23 @@ export class BeerService {
       }),
       map(beerResponse => beerResponse.data),
       tap(beers => {
-        console.log(beers)
+        this.beers = beers
+        this.beers$.next(beers)
+      })
+    ).subscribe()
+  }
+
+  getBreweryBeers(breweryId){
+    this.http.get<BeerResponseModel>(`/api/brewery/${breweryId}/beers?key=659d5c6b8f3d2447f090119e48202fdb`).
+    pipe(
+      tap(beerResponse => {
+        let responseCopy = {...beerResponse}
+        delete responseCopy.data
+        console.log(responseCopy)
+        this.searchData$.next(responseCopy);
+      }),
+      map(beerResponse => beerResponse.data),
+      tap(beers => {
         this.beers = beers
         this.beers$.next(beers)
       })
@@ -70,7 +86,6 @@ export class BeerService {
       }),
       map(beerResponse => beerResponse.data),
       tap(beers => {
-        console.log(beers)
         this.beers = beers
         this.beers$.next(beers)
       })
