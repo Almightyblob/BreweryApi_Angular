@@ -29,7 +29,6 @@ export class BeerService {
       tap(beerResponse => {
         let responseCopy = {...beerResponse}
         delete responseCopy.data
-        console.log(responseCopy)
         this.searchData$.next(responseCopy);
       }),
       map(beerResponse => beerResponse.data),
@@ -47,7 +46,6 @@ export class BeerService {
       tap(beerResponse => {
         let responseCopy = {...beerResponse}
         delete responseCopy.data
-        console.log(responseCopy)
         this.searchData$.next(responseCopy);
       }),
       map(beerResponse => beerResponse.data),
@@ -64,7 +62,6 @@ export class BeerService {
       tap(beerResponse => {
         let responseCopy = {...beerResponse}
         delete responseCopy.data
-        console.log(responseCopy)
         this.searchData$.next(responseCopy);
       }),
       map(beerResponse => beerResponse.data),
@@ -81,7 +78,6 @@ export class BeerService {
       tap(beerResponse => {
         let responseCopy = {...beerResponse}
         delete responseCopy.data
-        console.log(responseCopy)
         this.searchData$.next(responseCopy);
       }),
       map(beerResponse => beerResponse.data),

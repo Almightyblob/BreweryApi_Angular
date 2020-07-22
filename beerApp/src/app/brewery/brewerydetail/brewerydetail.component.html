@@ -1,17 +1,18 @@
-<p>brewerydetail works!</p>
-
-<div *ngFor="let brewery of (brewery$ | async)">
+<div class="row">
+<div class="col-xs-10 col-xs-offset-1 brewerycontainer" *ngFor="let brewery of (brewery$ | async)">
   <h2>{{brewery.name}}</h2>
-  <p>{{brewery.established}}</p>
-  <div *ngIf="brewery.images && brewery.images.medium; else NA">
+  <h4 *ngIf="brewery.established">Est. {{brewery.established}}</h4>
+  <div class="imagecontainer" *ngIf="brewery.images && brewery.images.medium; else NA">
     <img [src]="brewery.images.medium" alt="">
   </div>
-  <p>{{brewery.description}}</p>
+  <p *ngIf="brewery.description">{{brewery.description}}</p>
+  <p *ngIf="!brewery.description">No description available.</p>
   <p><a [href]="brewery.website" target="_blank">{{brewery.website}}</a></p>
-  <p (click)="goToBreweryBeers(brewery.id)">Beers by this brewery</p>
+  <p class="beerlink" (click)="goToBreweryBeers(brewery.id)">Beers by this brewery</p>
+</div>
 </div>
 <ng-template #NA>
-  <div>
+  <div class="noimage">
     <p>No image available</p>
   </div>
 </ng-template>

@@ -3,15 +3,20 @@ import {BreweryModel} from "../models/brewery.model";
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {BreweryResponseModel} from "../models/brewery-response.model";
-import {map} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {BreweryLocationResponseModel} from "../models/brewery-location-response.model";
 import {BeerResponseModel} from "../models/beer-response.model";
+import {SearchDataModel} from "../models/searchData.model";
 
 @Injectable()
 export class BreweryService {
   breweries$ = new BehaviorSubject<BreweryModel[]>([]);
   brewery$ = new BehaviorSubject<BreweryModel[]>([]);
   private breweries: BreweryModel[];
+  searchData$ = new BehaviorSubject<SearchDataModel>(
+    {  "currentPage": 0,
+      "numberOfPages": 0,
+      "totalResults": 0,})
   countryCodes$ = new BehaviorSubject([]);
 
   constructor(private http: HttpClient) {
@@ -20,6 +25,11 @@ export class BreweryService {
   breweryNameSearch(keyword: string){
     this.http.get<BreweryResponseModel>(`/api/breweries/?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`)
       .pipe(
+        tap(breweryResponse => {
+          let responseCopy = {...breweryResponse}
+          delete responseCopy.data
+          this.searchData$.next(responseCopy);
+        }),
         map(breweryResponse => breweryResponse.data)
       )
       .subscribe((breweries: BreweryModel[]) => {
@@ -31,10 +41,15 @@ export class BreweryService {
   breweryCountrySearch(keyword: string){
     this.http.get<BreweryLocationResponseModel>(`/api/locations/?key=659d5c6b8f3d2447f090119e48202fdb&countryIsoCode=${keyword}`)
       .pipe(
+        tap(breweryResponse => {
+          let responseCopy = {...breweryResponse}
+          delete responseCopy.data
+          this.searchData$.next(responseCopy);
+        }),
         map(locationResponse => locationResponse.data.map(locations => locations.brewery)),
         // filtering out duplicates provided by location search response
         map( breweries => breweries.filter((v, i, a) => a.findIndex(t=>(t.id === v.id)) === i)
-          .sort((a, b) => a.name.localeCompare(b.name))),
+          .sort((a, b) => b.name.localeCompare(a.name))),
      )
       .subscribe(breweries => {
         this.breweries = breweries
