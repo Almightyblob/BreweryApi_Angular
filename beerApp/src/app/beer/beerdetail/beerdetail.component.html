@@ -1,10 +1,22 @@
-<p>beerdetail works!</p>
-
 <div *ngFor="let beer of (beer$ | async)">
   <h2>{{beer.name}}</h2>
-  <div>
-    <img [src]="beer.labels.medium" alt="">
+  <h4>{{beer.style.name}}</h4>
+  <div *ngIf="beer.labels && beer.labels.medium">
+    <img  [src]="beer.labels.medium" alt="">
   </div>
-  <p>{{beer.style.description}}</p>
-  <p>{{beer.glass.name}}</p>
+  <div *ngIf="!beer.labels">
+    <p >No image available</p>
+  </div>
+  <p>Description: {{beer.style.description ? beer.style.description : "N/A"}}</p>
+  <div>
+    <p>ABV min: <span *ngIf="beer.style.abvMin ; else NA">{{beer.style.abvMin}}</span></p>
+    <p>ABV max: <span>{{beer.style.abvMax ? beer.style.abvMax: 'N/A' }}</span></p>
+    <p>FG min: <span>{{beer.style.fgMin ? beer.style.fgMin: 'N/A' }}</span></p>
+    <p>FG max: <span>{{beer.style.fgMax ? beer.style.fgMax: 'N/A' }}</span></p>
+    <p>IBU min: <span>{{beer.style.ibuMin ? beer.style.ibuMin: 'N/A' }}</span></p>
+    <p>IBU max: <span>{{beer.style.ibuMax ? beer.style.ibuMax: 'N/A' }}</span></p>
+    <p>SRM min: <span>{{beer.style.srmMin ? beer.style.srmMin: 'N/A' }}</span></p>
+    <p>SRM max: <span>{{beer.style.srmMax ? beer.style.srmMax: 'N/A' }}</span></p>
+    <template #NA> N/A</template>
+  </div>
 </div>
