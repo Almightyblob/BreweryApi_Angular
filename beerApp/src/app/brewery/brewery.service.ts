@@ -3,10 +3,11 @@ import {BreweryModel} from "../models/brewery.model";
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {BreweryResponseModel} from "../models/brewery-response.model";
-import {map, tap} from "rxjs/operators";
+import {finalize, map, tap} from "rxjs/operators";
 import {BreweryLocationResponseModel} from "../models/brewery-location-response.model";
 import {BeerResponseModel} from "../models/beer-response.model";
 import {SearchDataModel} from "../models/searchData.model";
+import {LoadingService} from "../components/loading/loading.service";
 
 @Injectable()
 export class BreweryService {
@@ -19,18 +20,24 @@ export class BreweryService {
       "totalResults": 0,})
   countryCodes$ = new BehaviorSubject([]);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private loadingService: LoadingService) {
+  }
+
+  extractSearchData(response){
+    let responseCopy = {...response}
+    delete responseCopy.data
+    this.searchData$.next(responseCopy);
   }
 
   breweryNameSearch(keyword: string){
+    this.loadingService.loadingOn()
     this.http.get<BreweryResponseModel>(`/api/breweries/?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`)
       .pipe(
         tap(breweryResponse => {
-          let responseCopy = {...breweryResponse}
-          delete responseCopy.data
-          this.searchData$.next(responseCopy);
+          this.extractSearchData(breweryResponse)
         }),
-        map(breweryResponse => breweryResponse.data)
+        map(breweryResponse => breweryResponse.data),
+        finalize(() => this.loadingService.loadingOff())
       )
       .subscribe((breweries: BreweryModel[]) => {
         this.breweries = breweries
@@ -39,17 +46,16 @@ export class BreweryService {
   }
 
   breweryCountrySearch(keyword: string){
+    this.loadingService.loadingOn()
     this.http.get<BreweryLocationResponseModel>(`/api/locations/?key=659d5c6b8f3d2447f090119e48202fdb&countryIsoCode=${keyword}`)
       .pipe(
         tap(breweryResponse => {
-          let responseCopy = {...breweryResponse}
-          delete responseCopy.data
-          this.searchData$.next(responseCopy);
+          this.extractSearchData(breweryResponse)
         }),
         map(locationResponse => locationResponse.data.map(locations => locations.brewery)),
         // filtering out duplicates provided by location search response
-        map( breweries => breweries.filter((v, i, a) => a.findIndex(t=>(t.id === v.id)) === i)
-          .sort((a, b) => b.name.localeCompare(a.name))),
+        map( breweries => breweries.filter((v, i, a) => a.findIndex(t=>(t.id === v.id)) === i)),
+        finalize(() => this.loadingService.loadingOff())
      )
       .subscribe(breweries => {
         this.breweries = breweries

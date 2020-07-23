@@ -1,10 +1,18 @@
 .top-bar {
+  position: relative;
   display: flex;
   height: 30px;
   padding-top: 2px;
   justify-content: space-around;
   align-items: center;
   background-color: #dd472c;
+}
+
+.loadingspinner {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 20;
 }
 
 .navbutton:hover {

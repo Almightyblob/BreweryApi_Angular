@@ -1,4 +1,5 @@
 <div class="top-bar">
+  <app-loading class="loadingspinner" *ngIf="(loading$ |async)"></app-loading>
   <h4 class="navbutton" (click)="openBreweryForm()">SEARCH BREWERIES</h4>
   <h4 class="navbutton" (click)="openBeerForm()">SEARCH BEERS</h4>
 </div>

@@ -12,13 +12,16 @@ import {BeerService} from "./beer/beer.service";
 import {BreweryService} from "./brewery/brewery.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
+import { LoadingComponent } from './components/loading/loading.component';
+import {LoadingService} from "./components/loading/loading.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     BreweryModule,
 
   ],
-  providers: [BeerService, BreweryService],
+  providers: [BeerService, BreweryService, LoadingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
