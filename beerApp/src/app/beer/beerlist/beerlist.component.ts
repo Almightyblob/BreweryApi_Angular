@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BeerService} from "../beer.service";
-import {BeerModel} from "../../models/beer.model";
+import {BeerModel} from "../../models/Beer/beer.model";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {SearchDataModel} from "../../models/searchData.model";

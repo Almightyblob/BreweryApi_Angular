@@ -8,6 +8,11 @@
   background-color: #dd472c;
 }
 
+.top-bar h4 {
+  font-family: Bebas Neue;
+  font-size: 20px;
+}
+
 .loadingspinner {
   position: absolute;
   top: 5px;
@@ -25,13 +30,7 @@
   justify-content: space-around;
   align-items: center;
   padding-top: 10px;
-  background-color: #dd472c;
-}
-
-.top-bar h4 {
-  font-family: Bebas Neue;
-  font-size: 20px;
-  color: white;
+  background-color: #932d28;
 }
 
 .form-group {
@@ -65,7 +64,7 @@ label {
 }
 
 button {
-  background: #932d28;
+  background: #dd472c;
   border: none;
   font-family: "Bebas Neue";
   font-size: 14px;

@@ -1,7 +1,13 @@
 <div class="top-bar">
   <app-loading class="loadingspinner" *ngIf="(loading$ |async)"></app-loading>
-  <h4 class="navbutton" (click)="openBreweryForm()">SEARCH BREWERIES</h4>
-  <h4 class="navbutton" (click)="openBeerForm()">SEARCH BEERS</h4>
+  <h4 class="navbutton" (click)="openBreweryForm()"
+      [ngStyle]="brewerySearchOn ? {'color': 'white'} : { 'color' : '#932d28'}">
+    SEARCH BREWERIES
+  </h4>
+  <h4 class="navbutton" (click)="openBeerForm()"
+      [ngStyle]="beerSearchOn ? {'color': 'white'} : { 'color' : '#932d28'}">
+    SEARCH BEERS
+  </h4>
 </div>
 <div class="search-bar" *ngIf="brewerySearchOn">
   <form [formGroup]="breweryForm" class="form-group">

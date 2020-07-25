@@ -1,12 +1,12 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Subject} from "rxjs";
-import {BeerResponseModel} from "../models/beer-response.model";
+import {BeerResponseModel} from "../models/Beer/beer-response.model";
 import {tap, map, finalize} from "rxjs/operators";
-import {BeerModel} from "../models/beer.model";
+import {BeerModel} from "../models/Beer/beer.model";
 import {SearchDataModel} from "../models/searchData.model";
-import {StylesResponseModel} from "../models/styles-response.model";
-import {StyleModel} from "../models/style.model";
+import {StylesResponseModel} from "../models/Style/styles-response.model";
+import {StyleModel} from "../models/Style/style.model";
 import {LoadingService} from "../components/loading/loading.service";
 
 @Injectable()

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BeerModel} from "../../models/beer.model";
+import {BeerModel} from "../../models/Beer/beer.model";
 import {Observable} from "rxjs";
 import {BeerService} from "../beer.service";
 

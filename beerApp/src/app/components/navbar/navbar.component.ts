@@ -4,8 +4,8 @@ import {BreweryService} from "../../brewery/brewery.service"
 import {BeerService} from "../../beer/beer.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {StyleModel} from "../../models/style.model";
-import {BreweryLocationModel} from "../../models/brewery-location.model";
+import {StyleModel} from "../../models/Style/style.model";
+import {BreweryLocationModel} from "../../models/Brewery/brewery-location.model";
 import {LoadingService} from "../loading/loading.service";
 
 @Component({
