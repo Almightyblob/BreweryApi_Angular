@@ -4,8 +4,8 @@ export interface BeerModel
       "name": string,
       "nameDisplay": string,
       "abv": string,
-      "glasswareId": 4,
-      "styleId": 98,
+      "glasswareId": number,
+      "styleId": number,
       "isOrganic": string,
       "isRetired": string,
       "labels": {

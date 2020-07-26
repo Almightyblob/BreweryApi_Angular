@@ -1,6 +1,6 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, Subject} from "rxjs";
+import {BehaviorSubject, pipe, Subject} from "rxjs";
 import {BeerResponseModel} from "../models/Beer/beer-response.model";
 import {tap, map, finalize} from "rxjs/operators";
 import {BeerModel} from "../models/Beer/beer.model";
@@ -30,15 +30,19 @@ export class BeerService {
     this.searchData$.next(responseCopy);
   }
 
-  searchBeerName(keyword: string){
-    this.loadingService.loadingOn()
-    this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`).
-    pipe(
-      tap(beerResponse => {
+  transformData = ()=> pipe(
+      tap((beerResponse: BeerResponseModel) => {
         this.extractSearchData(beerResponse)
       }),
       map(beerResponse => beerResponse.data),
       finalize(() => this.loadingService.loadingOff())
+    )
+
+  searchBeerName(keyword: string){
+    this.loadingService.loadingOn()
+    this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`).
+    pipe(
+      this.transformData()
     ).subscribe(beers => {
       this.beers = beers
       this.beers$.next(beers)
@@ -49,11 +53,7 @@ export class BeerService {
     this.loadingService.loadingOn()
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&styleId=${keyword}`).
     pipe(
-      tap(beerResponse => {
-        this.extractSearchData(beerResponse)
-      }),
-      map(beerResponse => beerResponse.data),
-      finalize(() => this.loadingService.loadingOff())
+      this.transformData()
     ).subscribe(beers => {
       this.beers = beers
       this.beers$.next(beers)
@@ -64,11 +64,7 @@ export class BeerService {
     this.loadingService.loadingOn()
     this.http.get<BeerResponseModel>(`/api/brewery/${breweryId}/beers?key=659d5c6b8f3d2447f090119e48202fdb`).
     pipe(
-      tap(beerResponse => {
-        this.extractSearchData(beerResponse)
-      }),
-      map(beerResponse => beerResponse.data),
-      finalize(() => this.loadingService.loadingOff())
+      this.transformData()
     ).subscribe(beers => {
       this.beers = beers
       this.beers$.next(beers)
@@ -79,11 +75,7 @@ export class BeerService {
     this.loadingService.loadingOn()
     this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&p=${nextPage}`).
     pipe(
-      tap(beerResponse => {
-        this.extractSearchData(beerResponse)
-      }),
-      map(beerResponse => beerResponse.data),
-      finalize(() => this.loadingService.loadingOff())
+      this.transformData()
     ).subscribe(beers => {
       this.beers = beers
       this.beers$.next(beers)
