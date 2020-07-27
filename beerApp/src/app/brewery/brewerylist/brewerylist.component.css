@@ -26,4 +26,5 @@ p, span {
 .brewery-list li:hover {
   color: #dd472c;
   cursor: pointer;
+  text-decoration: underline;
 }

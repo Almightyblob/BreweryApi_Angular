@@ -55,6 +55,7 @@ hr {
 img {
   border: #932d28 1px solid;
   padding: 5px;
+  max-width: 100%;
 }
 
 .beerlink {

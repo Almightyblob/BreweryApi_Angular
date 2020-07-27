@@ -26,6 +26,7 @@ p, span {
 .beer-item li:hover {
   color: #dd472c;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .searchnavigation:hover{
