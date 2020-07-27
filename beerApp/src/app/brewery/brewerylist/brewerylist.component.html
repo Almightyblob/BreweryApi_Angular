@@ -7,7 +7,7 @@
       <span class="divider">|</span>
     </div>
   </div>
-  <div class="col-xs-8 col-xs-offset-1 brewery-list">
+  <div class="col-xs-8 col-xs-offset-1 brewery-list" [@listAnimation]="(breweries$ | async).length">
     <ul *ngFor="let brewery of (breweries$ | async); let i = index" (click)="goToBrewery(i)">
       <li>{{brewery.name}}</li>
     </ul>

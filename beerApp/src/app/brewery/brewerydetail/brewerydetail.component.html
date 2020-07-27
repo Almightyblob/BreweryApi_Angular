@@ -5,10 +5,14 @@
   <div class="imagecontainer" *ngIf="brewery.images && brewery.images.medium; else NA">
     <img [src]="brewery.images.medium" alt="">
   </div>
+  <div>
   <p *ngIf="brewery.description">{{brewery.description}}</p>
   <p *ngIf="!brewery.description">No description available.</p>
+  </div>
+  <div>
   <p><a [href]="brewery.website" target="_blank">{{brewery.website}}</a></p>
   <p class="beerlink" (click)="goToBreweryBeers(brewery.id)">Beers by this brewery</p>
+  </div>
 </div>
 </div>
 <ng-template #NA>

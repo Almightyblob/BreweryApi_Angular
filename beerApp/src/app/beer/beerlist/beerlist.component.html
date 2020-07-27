@@ -19,9 +19,10 @@
       </span>
     </div>
   </div>
-  <div class="col-xs-8 col-xs-offset-1 beer-list">
-    <ul class="beer-item" *ngFor="let beer of (beers$ | async); let i = index" (click)="onGoToBeer(i)">
-      <li>{{beer.name}}</li>
+  <div class="col-xs-8 col-xs-offset-1 beer-list" [@listAnimation]="(beers$ | async).length">
+    <ul class="beer-item" *ngFor="let beer of (beers$ | async); let i = index"
+        (click)="onGoToBeer(i)">
+      <li >{{beer.name}}</li>
     </ul>
   </div>
 </div>
