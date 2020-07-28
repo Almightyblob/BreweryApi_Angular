@@ -1,8 +1,8 @@
-import {BeerModel} from "./beer.model";
+import {BeerModel} from './beer.model';
 
 export interface BeerResponseModel {
-  "currentPage": number,
-  "numberOfPages": number,
-  "totalResults": number,
-  "data": BeerModel[]
+    'currentPage': number;
+    'numberOfPages': number;
+    'totalResults': number;
+    'data': BeerModel[];
 }

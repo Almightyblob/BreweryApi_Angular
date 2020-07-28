@@ -1,35 +1,35 @@
 p, span {
-  color: white
+    color: white
 }
 
 .searchData {
-  font-size: 12px;
-  text-align: center;
-  margin: 5px;
+    font-size: 12px;
+    text-align: center;
+    margin: 5px;
 }
 
 .divider {
-  color: #dd472c;
+    color: #dd472c;
 }
 
 .beer-list {
-  margin-top: 50px;
-  display: inline;
+    margin-top: 50px;
+    display: inline;
 }
 
 .beer-item li {
-  font-size: 14px;
-  color: white;
-  list-style: none;
+    font-size: 14px;
+    color: white;
+    list-style: none;
 }
 
 .beer-item li:hover {
-  color: #dd472c;
-  cursor: pointer;
-  text-decoration: underline;
+    color: #dd472c;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
-.searchnavigation:hover{
-  color: #dd472c;
-  cursor: pointer;
+.searchnavigation:hover {
+    color: #dd472c;
+    cursor: pointer;
 }

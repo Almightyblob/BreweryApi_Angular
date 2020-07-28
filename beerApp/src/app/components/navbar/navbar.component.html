@@ -1,53 +1,79 @@
 <div class="top-bar">
-  <app-loading class="loadingspinner" *ngIf="(loading$ |async)"></app-loading>
-  <h4 class="navbutton" (click)="openBreweryForm()"
-      [ngStyle]="brewerySearchOn ? {'color': 'white'} : { 'color' : '#932d28'}">
-    SEARCH BREWERIES
-  </h4>
-  <h4 class="navbutton" (click)="openBeerForm()"
-      [ngStyle]="beerSearchOn ? {'color': 'white'} : { 'color' : '#932d28'}">
-    SEARCH BEERS
-  </h4>
+    <app-loading class="loadingspinner" *ngIf="(loading$ |async)"></app-loading>
+    <h4 class="navbutton" (click)="openBreweryForm()"
+        [ngStyle]="brewerySearchOn ? {'color': 'white'} : { 'color' : '#932d28'}"
+    >
+        SEARCH BREWERIES
+    </h4>
+    <h4 class="navbutton" (click)="openBeerForm()"
+        [ngStyle]="beerSearchOn ? {'color': 'white'} : { 'color' : '#932d28'}"
+    >
+        SEARCH BEERS
+    </h4>
 </div>
 <div class="search-bar" *ngIf="brewerySearchOn">
-  <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <form [formGroup]="breweryForm" class="form-group">
-          <label>Name </label>
-          <input formControlName="breweryName" name="breweryName" type="text">
-          <button (click)="onBreweryNameSearch()">Search</button>
-        </form>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <form [formGroup]="breweryForm" class="form-group">
-        <label>Country </label>
-          <select formControlName="breweryCountry" (change)="onBreweryCountrySearch()">
-            <option value="">Select a Country</option>
-            <option *ngFor="let location of (countryCodes$ | async)" [value]="location.countryIsoCode">{{location.country.displayName}}</option>
-          </select>
-        </form>
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <form [formGroup]="breweryForm" class="form-group">
+                <label>
+                    Name
+                </label>
+                <input formControlName="breweryName"
+                       name="breweryName"
+                       type="text">
+                <button (click)="onBreweryNameSearch()">
+                    Search
+                </button>
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <form [formGroup]="breweryForm" class="form-group">
+                <label>Country </label>
+                <select formControlName="breweryCountry"
+                        (change)="onBreweryCountrySearch()"
+                >
+                    <option value="">Select a Country</option>
+                    <option *ngFor="let location of (countryCodes$ | async)"
+                            [value]="location.countryIsoCode"
+                    >
+                        {{location.country.displayName}}
+                    </option>
+                </select>
+            </form>
+        </div>
+    </div>
 </div>
 <div class="search-bar" *ngIf="beerSearchOn">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <form [formGroup]="beerForm" class="form-group">
-          <label>Name </label>
-          <input formControlName="beerName" type="text">
-          <button (click)="onBeerNameSearch()">Search</button>
-      </form>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <form [formGroup]="beerForm" class="form-group">
+                <label>
+                    Name
+                </label>
+                <input formControlName="beerName" type="text">
+                <button (click)="onBeerNameSearch()">
+                    Search
+                </button>
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <form [formGroup]="beerForm" class="form-group">
+                <label>
+                    Type
+                </label>
+                <select formControlName="beerStyle" (change)="onBeerStyleSearch()">
+                    <option value="">
+                        Select a type
+                    </option>
+                    <option *ngFor="let style of (styles$ | async)" [
+                            value]="style.id"
+                    >
+                        {{style.name}}
+                    </option>
+                </select>
+            </form>
+        </div>
     </div>
-    <div class="col-xs-12 col-sm-6">
-      <form [formGroup]="beerForm" class="form-group">
-          <label>Type </label>
-          <select formControlName="beerStyle" (change)="onBeerStyleSearch()">
-            <option value="">Select a type</option>
-            <option *ngFor="let style of (styles$ | async)" [value]="style.id">{{style.name}}</option>
-          </select>
-      </form>
-    </div>
-  </div>
 </div>
 
 

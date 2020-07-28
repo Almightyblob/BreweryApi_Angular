@@ -1,13 +1,13 @@
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject} from 'rxjs';
 
 export class LoadingService {
-  loading$ = new BehaviorSubject<boolean>(false)
+    loading$ = new BehaviorSubject<boolean>(false);
 
-  loadingOn(){
-    this.loading$.next(true)
-  }
+    loadingOn(): void {
+        this.loading$.next(true);
+    }
 
-  loadingOff(){
-    this.loading$.next(false)
-  }
+    loadingOff(): void {
+        this.loading$.next(false);
+    }
 }
