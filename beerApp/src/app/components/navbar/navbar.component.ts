@@ -79,4 +79,8 @@ export class NavbarComponent implements OnInit {
         this.router.navigate(['/beer']);
     }
 
+    navigateHome(): void {
+        this.router.navigate(['']);
+    }
+
 }

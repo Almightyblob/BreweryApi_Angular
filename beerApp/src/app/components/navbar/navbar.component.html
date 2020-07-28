@@ -5,6 +5,9 @@
     >
         SEARCH BREWERIES
     </h4>
+    <div class="logo-container" (click)="navigateHome()">
+        <img class="logo" src="../../../assets/beer-128.png" alt="">
+    </div>
     <h4 class="navbutton" (click)="openBeerForm()"
         [ngStyle]="beerSearchOn ? {'color': 'white'} : { 'color' : '#932d28'}"
     >

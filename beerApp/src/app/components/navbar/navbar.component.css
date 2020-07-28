@@ -3,7 +3,7 @@
     display: flex;
     height: 30px;
     padding-top: 2px;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background-color: #dd472c;
 
@@ -12,6 +12,21 @@
 .top-bar h4 {
     font-family: Bebas Neue;
     font-size: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+.logo {
+    height: 100%;
+    color: white;
+    padding: 2px;
+    margin: 0 30px;
 }
 
 .loadingspinner {
