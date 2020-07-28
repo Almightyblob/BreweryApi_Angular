@@ -6,6 +6,7 @@
   justify-content: space-around;
   align-items: center;
   background-color: #dd472c;
+
 }
 
 .top-bar h4 {
@@ -26,21 +27,19 @@
 
 .search-bar {
   display: flex;
-  height: 40px;
   justify-content: space-around;
   align-items: center;
-  padding-top: 10px;
   background-color: #932d28;
+  max-height: 100%;
+  z-index: 20;
 }
 
 .form-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: baseline;
-}
-
-.form-field {
-  margin: 10px;
+  margin: 0;
+  padding: 2px;
 }
 
 input {

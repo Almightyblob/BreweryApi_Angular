@@ -18,7 +18,7 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
           stagger(30, [
             animate('0.5s', style({ opacity: 1}))
           ])
-        ])
+        ], {optional: true})
       ])
     ])
   ]

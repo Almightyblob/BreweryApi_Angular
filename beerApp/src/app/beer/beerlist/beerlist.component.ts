@@ -16,9 +16,9 @@ import {animate, animateChild, query, stagger, style, transition, trigger} from 
         query(':enter', [
           style({ opacity: 0}),
           stagger(30, [
-            animate('0.5s', style({ opacity: 1}))
+            animate('0.5s ease-in', style({ opacity: 1}))
           ])
-        ])
+        ], {optional: true})
       ])
   ])
   ]
