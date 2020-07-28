@@ -82,8 +82,11 @@ export class BeerService {
 
     getAllStyles(): void {
         this.http.get<StylesResponseModel>(`/api/styles?key=659d5c6b8f3d2447f090119e48202fdb`).pipe(
-            map(stylesResponse => stylesResponse.data)
-        ).subscribe(styles => this.styles$.next(styles));
+            map(stylesResponse => stylesResponse.data.sort((a, b) => a.name.localeCompare(b.name)))
+        ).subscribe(styles => {
+            console.log(styles);
+            this.styles$.next(styles);
+        });
     }
 
     getBeerByIndex(index: number): void {

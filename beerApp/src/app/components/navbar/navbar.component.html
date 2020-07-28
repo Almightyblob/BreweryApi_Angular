@@ -65,8 +65,8 @@
                     <option value="">
                         Select a type
                     </option>
-                    <option *ngFor="let style of (styles$ | async)" [
-                            value]="style.id"
+                    <option *ngFor="let style of (styles$ | async)"
+                            [value]="style.id"
                     >
                         {{style.name}}
                     </option>

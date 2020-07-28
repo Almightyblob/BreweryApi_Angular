@@ -8,6 +8,8 @@ import {BreweryLocationResponseModel} from '../models/Brewery/brewery-location-r
 import {SearchDataModel} from '../models/searchData.model';
 import {LoadingService} from '../components/loading/loading.service';
 
+type BreweryResponse = BreweryResponseModel | BreweryLocationResponseModel;
+
 @Injectable()
 export class BreweryService {
     breweries$ = new BehaviorSubject<BreweryModel[]>([]);
@@ -24,10 +26,11 @@ export class BreweryService {
     constructor(private http: HttpClient, private loadingService: LoadingService) {
     }
 
-    extractSearchData(response: BreweryResponseModel | BreweryLocationResponseModel): void {
+    extractSearchData(response: BreweryResponse): BreweryResponse {
         const responseCopy = {...response};
         delete responseCopy.data;
         this.searchData$.next(responseCopy);
+        return response;
     }
 
     breweryNameSearch(keyword: string): void {
@@ -74,7 +77,7 @@ export class BreweryService {
                 map(locationResponse => locationResponse.data),
                 // filtering out duplicates provided by location search response
                 map(locations => locations.filter((v, i, a) => a.findIndex(t => (t.countryIsoCode === v.countryIsoCode)) === i)
-                    .sort((a, b) => a.name.localeCompare(b.name)),
+                    .sort((b, a) => a.name.localeCompare(b.name)),
                 ))
             .subscribe(countryCodes => {
                 this.countryCodes$.next(countryCodes);

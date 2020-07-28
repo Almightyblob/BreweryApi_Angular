@@ -12,10 +12,10 @@
         >
             <img [src]="beer.labels.medium" alt="">
         </div>
-        <div class="nolabel"
-             *ngIf="!beer.labels"
-        >
-            <p>No image available</p>
+        <div class="nolabel" *ngIf="!beer.labels">
+            <p>
+                No image available
+            </p>
         </div>
         <h5>
             DESCRIPTION
