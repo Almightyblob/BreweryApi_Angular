@@ -1,6 +1,6 @@
-<div class="row">
+<div class="beerlist row">
     <div *ngIf="(searchData$ | async) as searchData">
-        <div class="col-xs-12 searchData"
+        <div class="beerlist__searchData col-xs-12"
              *ngIf="searchData.totalResults"
         >
             <span>
@@ -13,7 +13,8 @@
                 <span class="searchnavigation"
                     (click)="this.beerPageChange(+searchData.currentPage -1)"
                 >
-                Previous page </span>
+                    Previous page
+                </span>
                 <span class="divider">
                     |
                 </span>
@@ -34,10 +35,10 @@
             </span>
         </div>
     </div>
-    <div class="col-xs-8 col-xs-offset-1 beer-list"
+    <div class="beerlist__list col-xs-8 col-xs-offset-1"
          [@listAnimation]="(beers$ | async)?.length"
     >
-        <ul class="beer-item"
+        <ul class="beerlist__list item"
             *ngFor="let beer of (beers$ | async); let i = index"
             (click)="onGoToBeer(i)"
         >

@@ -1,0 +1,40 @@
+.beerlist{
+    p, span {
+        color: white
+    }
+
+    &__searchData {
+        font-size: 12px;
+        text-align: center;
+        margin: 5px;
+
+        .divider {
+            color: #dd472c;
+        }
+
+        .searchnavigation:hover {
+            color: #dd472c;
+            cursor: pointer;
+        }
+    }
+
+    &__list {
+        margin-top: 50px;
+        display: inline;
+
+        .item{
+            li {
+                font-size: 14px;
+                color: white;
+                list-style: none;
+            }
+
+            li:hover {
+                color: #dd472c;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+        }
+    }
+}

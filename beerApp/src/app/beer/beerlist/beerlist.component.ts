@@ -9,7 +9,7 @@ import {animate, query, stagger, style, transition, trigger} from '@angular/anim
 @Component({
     selector: 'app-beerlist',
     templateUrl: './beerlist.component.html',
-    styleUrls: ['./beerlist.component.css'],
+    styleUrls: ['./beerlist.component.scss'],
     animations: [
         trigger('listAnimation', [
             transition('* => *', [ // each time the binding value changes
