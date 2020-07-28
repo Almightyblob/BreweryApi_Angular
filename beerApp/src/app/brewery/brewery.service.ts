@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {BreweryModel} from '../models/Brewery/brewery.model';
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, MonoTypeOperatorFunction} from 'rxjs';
 import {BreweryResponseModel} from '../models/Brewery/brewery-response.model';
 import {finalize, map, tap} from 'rxjs/operators';
 import {BreweryLocationResponseModel} from '../models/Brewery/brewery-location-response.model';
@@ -26,20 +26,20 @@ export class BreweryService {
     constructor(private http: HttpClient, private loadingService: LoadingService) {
     }
 
-    extractSearchData(response: BreweryResponse): BreweryResponse {
-        const responseCopy = {...response};
-        delete responseCopy.data;
-        this.searchData$.next(responseCopy);
-        return response;
+    extractSearchData(): MonoTypeOperatorFunction<BreweryResponse> {
+        return tap<BreweryResponse>((response) => {
+            const responseCopy = {...response};
+            delete responseCopy.data;
+            this.searchData$.next(responseCopy);
+            return response;
+        });
     }
 
     breweryNameSearch(keyword: string): void {
         this.loadingService.loadingOn();
         this.http.get<BreweryResponseModel>(`/api/breweries/?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`)
             .pipe(
-                tap(breweryResponse => {
-                    this.extractSearchData(breweryResponse);
-                }),
+                this.extractSearchData(),
                 map(breweryResponse => breweryResponse.data),
                 finalize(() => this.loadingService.loadingOff())
             )
@@ -53,10 +53,9 @@ export class BreweryService {
         this.loadingService.loadingOn();
         this.http.get<BreweryLocationResponseModel>(`/api/locations/?key=659d5c6b8f3d2447f090119e48202fdb&countryIsoCode=${keyword}`)
             .pipe(
-                tap(breweryResponse => {
-                    this.extractSearchData(breweryResponse);
-                }),
-                map(locationResponse => locationResponse.data.map(locations => locations.brewery)),
+                this.extractSearchData()
+                ,
+                map((locationResponse: BreweryLocationResponseModel) => locationResponse.data.map(locations => locations.brewery)),
                 // filtering out duplicates provided by location search response
                 map(breweries => breweries.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i)),
                 finalize(() => this.loadingService.loadingOff())

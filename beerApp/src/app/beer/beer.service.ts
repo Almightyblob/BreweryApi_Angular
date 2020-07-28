@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, pipe} from 'rxjs';
+import {BehaviorSubject, MonoTypeOperatorFunction, pipe} from 'rxjs';
 import {BeerResponseModel} from '../models/Beer/beer-response.model';
 import {finalize, map, tap} from 'rxjs/operators';
 import {BeerModel} from '../models/Beer/beer.model';
@@ -26,16 +26,17 @@ export class BeerService {
     constructor(private http: HttpClient, private loadingService: LoadingService) {
     }
 
-    extractSearchData(response: BeerResponseModel): void {
-        const responseCopy = {...response};
-        delete responseCopy.data;
-        this.searchData$.next(responseCopy);
+    extractSearchData(): MonoTypeOperatorFunction<BeerResponseModel> {
+        return tap<BeerResponseModel>((response) => {
+            const responseCopy = {...response};
+            delete responseCopy.data;
+            this.searchData$.next(responseCopy);
+            return response;
+        });
     }
 
     transformData = () => pipe(
-        tap((beerResponse: BeerResponseModel) => {
-            this.extractSearchData(beerResponse);
-        }),
+            this.extractSearchData(),
         map(beerResponse => beerResponse.data),
         finalize(() => this.loadingService.loadingOff())
     )
@@ -83,10 +84,9 @@ export class BeerService {
     getAllStyles(): void {
         this.http.get<StylesResponseModel>(`/api/styles?key=659d5c6b8f3d2447f090119e48202fdb`).pipe(
             map(stylesResponse => stylesResponse.data.sort((a, b) => a.name.localeCompare(b.name)))
-        ).subscribe(styles => {
-            console.log(styles);
-            this.styles$.next(styles);
-        });
+        ).subscribe(styles =>
+            this.styles$.next(styles)
+        );
     }
 
     getBeerByIndex(index: number): void {
