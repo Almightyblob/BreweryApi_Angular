@@ -1,13 +1,13 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, MonoTypeOperatorFunction, pipe} from 'rxjs';
-import {BeerResponseModel} from '../models/Beer/beer-response.model';
+import {BeerResponseModel} from '../../models/Beer/beer-response.model';
 import {finalize, map, tap} from 'rxjs/operators';
-import {BeerModel} from '../models/Beer/beer.model';
-import {SearchDataModel} from '../models/searchData.model';
-import {StylesResponseModel} from '../models/Style/styles-response.model';
-import {StyleModel} from '../models/Style/style.model';
-import {LoadingService} from '../components/loading/loading.service';
+import {BeerModel} from '../../models/Beer/beer.model';
+import {SearchDataModel} from '../../models/searchData.model';
+import {StylesResponseModel} from '../../models/Style/styles-response.model';
+import {StyleModel} from '../../models/Style/style.model';
+import {LoadingService} from '../../components/loading/loading.service';
 
 @Injectable()
 export class BeerService {

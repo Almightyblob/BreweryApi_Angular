@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {BreweryService} from '../../brewery/brewery.service';
-import {BeerService} from '../../beer/beer.service';
+import {BreweryService} from '../../pages/brewery/brewery.service';
+import {BeerService} from '../../pages/beer/beer.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {StyleModel} from '../../models/Style/style.model';

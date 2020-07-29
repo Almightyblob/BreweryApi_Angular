@@ -1,12 +1,12 @@
 import {HttpClient} from '@angular/common/http';
-import {BreweryModel} from '../models/Brewery/brewery.model';
+import {BreweryModel} from '../../models/Brewery/brewery.model';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, MonoTypeOperatorFunction} from 'rxjs';
-import {BreweryResponseModel} from '../models/Brewery/brewery-response.model';
+import {BreweryResponseModel} from '../../models/Brewery/brewery-response.model';
 import {finalize, map, tap} from 'rxjs/operators';
-import {BreweryLocationResponseModel} from '../models/Brewery/brewery-location-response.model';
-import {SearchDataModel} from '../models/searchData.model';
-import {LoadingService} from '../components/loading/loading.service';
+import {BreweryLocationResponseModel} from '../../models/Brewery/brewery-location-response.model';
+import {SearchDataModel} from '../../models/searchData.model';
+import {LoadingService} from '../../components/loading/loading.service';
 
 type BreweryResponse = BreweryResponseModel | BreweryLocationResponseModel;
 
