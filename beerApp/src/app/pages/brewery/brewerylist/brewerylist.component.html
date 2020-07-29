@@ -1,24 +1,26 @@
 <div class="breweryList row">
     <div *ngIf="(searchData$ | async) as searchData">
-        <div class="breweryList__searchData col-xs-12 " *ngIf="searchData.totalResults">
+        <div class="breweryList__searchData col-xs-12 " *ngIf="searchData.currentPage">
             <span>
                 Matches found: {{searchData.totalResults}}
             </span>
-            <span class="divider">
-                |
-            </span>
-            <span>
-                Page: {{searchData.currentPage}} of {{searchData.numberOfPages}}
-            </span>
-            <span class="divider">
-                |
+            <span *ngIf="searchData.totalResults !== 0">
+                <span class="divider">
+                    |
+                </span>
+                <span>
+                    Page: {{searchData.currentPage}} of {{searchData.numberOfPages}}
+                </span>
+                <span class="divider">
+                    |
+                </span>
             </span>
         </div>
     </div>
     <div class="breweryList__list col-xs-8 col-xs-offset-1"
-         [@listAnimation]="(breweries$ | async).length"
-    >
-        <div class="listItems">
+         [@listAnimation]="(breweries$ | async)?.length">
+        <div class="listItems"
+             >
             <ul *ngFor="let brewery of (breweries$ | async); let i = index" (click)="goToBrewery(i)">
                 <li>
                     {{brewery.name}}

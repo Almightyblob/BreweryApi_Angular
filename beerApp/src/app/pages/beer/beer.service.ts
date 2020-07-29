@@ -37,48 +37,41 @@ export class BeerService {
 
     transformData = () => pipe(
             this.extractSearchData(),
-        map(beerResponse => beerResponse.data),
+        map(beerResponse => beerResponse.data
+        ),
         finalize(() => this.loadingService.loadingOff())
     )
 
     searchBeerName(keyword: string): void {
         this.loadingService.loadingOn();
         this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`).pipe(
-            this.transformData()
-        ).subscribe(beers => {
-            this.beers = beers;
-            this.beers$.next(beers);
-        });
+            this.transformData(),
+        tap(beers => this.beers = beers)
+    ).subscribe(beers => this.beers$.next(beers));
     }
 
     searchBeerStyle(keyword: string): void {
         this.loadingService.loadingOn();
         this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&styleId=${keyword}`).pipe(
-            this.transformData()
-        ).subscribe(beers => {
-            this.beers = beers;
-            this.beers$.next(beers);
-        });
+            this.transformData(),
+            tap(beers => this.beers = beers)
+        ).subscribe(beers => this.beers$.next(beers));
     }
 
     getBreweryBeers(breweryId: string): void {
         this.loadingService.loadingOn();
         this.http.get<BeerResponseModel>(`/api/brewery/${breweryId}/beers?key=659d5c6b8f3d2447f090119e48202fdb`).pipe(
-            this.transformData()
-        ).subscribe(beers => {
-            this.beers = beers;
-            this.beers$.next(beers);
-        });
+            this.transformData(),
+            tap(beers => this.beers = beers)
+        ).subscribe(beers => this.beers$.next(beers));
     }
 
     beerPageChange(nextPage: string | number): void {
         this.loadingService.loadingOn();
         this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&p=${nextPage}`).pipe(
-            this.transformData()
-        ).subscribe(beers => {
-            this.beers = beers;
-            this.beers$.next(beers);
-        });
+            this.transformData(),
+            tap(beers => this.beers = beers)
+        ).subscribe(beers => this.beers$.next(beers));
     }
 
     getAllStyles(): void {
