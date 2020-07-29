@@ -1,6 +1,6 @@
-<div class="beerlist row">
+<div class="beerList row">
     <div *ngIf="(searchData$ | async) as searchData">
-        <div class="beerlist__searchData col-xs-12"
+        <div class="beerList__searchData col-xs-12"
              *ngIf="searchData.totalResults"
         >
             <span>
@@ -9,36 +9,36 @@
             <span class="divider">
                 |
             </span>
-            <span *ngIf="+searchData.currentPage > +1">
-                <span class="searchnavigation"
-                    (click)="this.beerPageChange(+searchData.currentPage -1)"
+            <div *ngIf="+searchData.currentPage > +1">
+                <span class="searchNavigation"
+                      (click)="this.beerPageChange(+searchData.currentPage -1)"
                 >
                     Previous page
                 </span>
                 <span class="divider">
                     |
                 </span>
-            </span>
+            </div>
             <span>
                 Page: {{searchData.currentPage}} of {{searchData.numberOfPages}}
             </span>
             <span class="divider">
                 |
             </span>
-            <span *ngIf="+searchData.currentPage < +searchData.numberOfPages">
+            <div *ngIf="+searchData.currentPage < +searchData.numberOfPages">
                 <span
-                    class="searchnavigation"
+                    class="searchNavigation"
                     (click)="this.beerPageChange(+searchData.currentPage + 1)"
                 >
                 Next page
                 </span>
-            </span>
+            </div>
         </div>
     </div>
-    <div class="beerlist__list col-xs-8 col-xs-offset-1"
+    <div class="beerList__list col-xs-8 col-xs-offset-1"
          [@listAnimation]="(beers$ | async)?.length"
     >
-        <ul class="beerlist__list item"
+        <ul class="listItems"
             *ngFor="let beer of (beers$ | async); let i = index"
             (click)="onGoToBeer(i)"
         >

@@ -1,19 +1,23 @@
-<div class="row">
-    <div class="col-xs-10 col-xs-offset-1 brewerycontainer"
+<div class="breweryDetail row">
+    <div class="breweryDetail__container col-xs-10 col-xs-offset-1"
          *ngFor="let brewery of (brewery$ | async)"
     >
-        <h2>
-            {{brewery.name}}
-        </h2>
-        <h4 *ngIf="brewery.established">
-            Est. {{brewery.established}}
-        </h4>
-        <div class="imagecontainer"
+        <div class="title">
+            <h2>
+                {{brewery.name}}
+            </h2>
+        </div>
+        <div class="subtitle">
+            <h4 *ngIf="brewery.established">
+                Est. {{brewery.established}}
+            </h4>
+        </div>
+        <div class="imageContainer"
              *ngIf="brewery.images?.medium; else NA"
         >
             <img [src]="brewery.images.medium" alt="">
         </div>
-        <div>
+        <div class="descriptionBlock">
             <p *ngIf="brewery.description">
                 {{brewery.description}}
             </p>
@@ -21,20 +25,21 @@
                 No description available.
             </p>
         </div>
-        <div>
+        <div class="webLinks">
             <p>
                 <a [href]="brewery.website" target="_blank">
                     {{brewery.website}}
                 </a>
             </p>
-            <p class="beerlink" (click)="goToBreweryBeers(brewery.id)">
+            <p class="beerLink" (click)="goToBreweryBeers(brewery.id)">
                 Beers by this brewery
             </p>
         </div>
     </div>
 </div>
+
 <ng-template #NA>
-    <div class="noimage">
+    <div class="noImage">
         <p>No image available</p>
     </div>
 </ng-template>

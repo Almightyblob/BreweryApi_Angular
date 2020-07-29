@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 @Component({
     selector: 'app-brewerydetail',
     templateUrl: './brewerydetail.component.html',
-    styleUrls: ['./brewerydetail.component.css']
+    styleUrls: ['./brewerydetail.component.scss']
 })
 export class BrewerydetailComponent implements OnInit {
 

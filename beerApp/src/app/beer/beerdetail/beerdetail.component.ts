@@ -6,7 +6,7 @@ import {BeerService} from '../beer.service';
 @Component({
     selector: 'app-beerdetail',
     templateUrl: './beerdetail.component.html',
-    styleUrls: ['./beerdetail.component.css']
+    styleUrls: ['./beerdetail.component.scss']
 })
 export class BeerdetailComponent implements OnInit {
 

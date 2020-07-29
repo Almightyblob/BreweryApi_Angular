@@ -1,31 +1,37 @@
-<div class="row">
-    <div class="col-xs-10 col-xs-offset-1 beercontainer"
+<div class="beerDetail row">
+    <div class="beerDetail__container col-xs-10 col-xs-offset-1 "
          *ngFor="let beer of (beer$ | async)">
-        <h2>
-            {{beer.name}}
-        </h2>
-        <h4>
-            {{beer.style?.name}}
-        </h4>
-        <div class="labelcontainer"
+        <div class="title">
+            <h2>
+                {{beer.name}}
+            </h2>
+        </div>
+        <div class="subtitle">
+            <h4>
+                {{beer.style?.name}}
+            </h4>
+        </div>
+        <div class="labelContainer"
              *ngIf="beer.labels && beer.labels.medium"
         >
             <img [src]="beer.labels.medium" alt="">
         </div>
-        <div class="nolabel" *ngIf="!beer.labels">
+        <div class="noLabel" *ngIf="!beer.labels">
             <p>
                 No image available
             </p>
         </div>
-        <h5>
-            DESCRIPTION
-        </h5>
-        <p *ngIf="beer.style?.description; else NA">
-            {{beer.style.description}}
-        </p>
+        <div class="descriptionBlock">
+            <h5>
+                DESCRIPTION
+            </h5>
+            <p *ngIf="beer.style?.description; else NA">
+                {{beer.style.description}}
+            </p>
+        </div>
         <hr>
-        <div class="row beerdetails">
-            <div class="col-xs-3">
+        <div class="beerDetail__container__styleDetails row ">
+            <div class="styleItems col-xs-3">
                 <p>ABV min:
                     <span *ngIf="beer.style?.abvMin ; else NA">
                         {{beer.style.abvMin}}
@@ -37,7 +43,7 @@
                     </span>
                 </p>
             </div>
-            <div class="col-xs-3">
+            <div class="styleItems col-xs-3">
                 <p>FG min:
                     <span *ngIf="beer.style?.fgMin ; else NA">
                         {{beer.style.fgMin}}
@@ -49,7 +55,7 @@
                     </span>
                 </p>
             </div>
-            <div class="col-xs-3">
+            <div class="styleItems col-xs-3">
                 <p>IBU min:
                     <span *ngIf="beer.style?.ibuMin ; else NA">
                         {{beer.style.ibuMin}}
@@ -61,7 +67,7 @@
                     </span>
                 </p>
             </div>
-            <div class="col-xs-3">
+            <div class="styleItems col-xs-3">
                 <p>SRM min:
                     <span *ngIf="beer.style?.srmMin ; else NA">
                         {{beer.style.srmMin}}
@@ -76,6 +82,7 @@
         </div>
     </div>
 </div>
+
 <ng-template #NA>
     <span style="color: white">
         N/A

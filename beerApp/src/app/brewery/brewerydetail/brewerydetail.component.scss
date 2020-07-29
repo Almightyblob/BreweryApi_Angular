@@ -1,0 +1,92 @@
+.breweryDetail {
+
+    &__container {
+        margin-top: 30px;
+        padding: 0 50px 0 50px;
+        border-left: 1px #932d28 solid;
+        border-right: 1px #932d28 solid;
+
+        p {
+            color: white;
+        }
+
+        hr {
+            border-top: 1px #932d28 solid;
+        }
+
+        .title {
+            h2 {
+                color: #dd472c;
+                font-family: "Bebas Neue";
+                text-align: center;
+            }
+        }
+
+        .subtitle {
+            h4 {
+                color: #932d28;
+                font-family: "Bebas Neue";
+                text-align: center;
+            }
+        }
+
+        .imageContainer {
+            text-align: center;
+            margin: 20px;
+
+            img {
+                border: #932d28 1px solid;
+                padding: 5px;
+                max-width: 100%;
+            }
+        }
+
+        .noImage {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                font-family: "Bebas Neue";
+                font-size: 12px;
+                color: lightgrey;
+            }
+        }
+
+        .webLinks {
+            a {
+                color: #dd472c
+            }
+
+            .beerLink {
+                color: #dd472c;
+            }
+
+            .beerLink:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+
+        }
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

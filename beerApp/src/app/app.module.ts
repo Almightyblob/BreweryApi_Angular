@@ -21,7 +21,7 @@ import {LoadingService} from './components/loading/loading.service';
         AppComponent,
         NavbarComponent,
         HomeComponent,
-        LoadingComponent
+        LoadingComponent,
     ],
     imports: [
         BrowserModule,
