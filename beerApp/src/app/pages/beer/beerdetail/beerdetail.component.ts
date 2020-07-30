@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BeerModel} from '../../../models/Beer/beer.model';
 import {Observable} from 'rxjs';
-import {BeerService} from '../beer.service';
+import {BeerService} from '../../../services/beer.service';
 
 @Component({
     selector: 'app-beerdetail',

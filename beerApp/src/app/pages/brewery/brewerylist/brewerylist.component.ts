@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {BreweryModel} from '../../../models/Brewery/brewery.model';
-import {BreweryService} from '../brewery.service';
+import {BreweryService} from '../../../services/brewery.service';
 import {Router} from '@angular/router';
 import {SearchDataModel} from '../../../models/searchData.model';
 import {animate, query, stagger, style, transition, trigger} from '@angular/animations';

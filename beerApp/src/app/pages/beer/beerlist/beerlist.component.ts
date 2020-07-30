@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BeerService} from '../beer.service';
+import {BeerService} from '../../../services/beer.service';
 import {BeerModel} from '../../../models/Beer/beer.model';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';

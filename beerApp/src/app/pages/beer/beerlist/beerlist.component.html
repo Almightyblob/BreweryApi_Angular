@@ -38,7 +38,8 @@
         </div>
     </div>
     <div class="beerList__list col-xs-8 col-xs-offset-1"
-             [@listAnimation]="(beers$ | async)?.length"
+         *ngIf="(beers$ | async ) as beers"
+             [@listAnimation]="beers?.length"
     >
         <ul class="listItems"
             *ngFor="let beer of (beers$ | async); let i = index"

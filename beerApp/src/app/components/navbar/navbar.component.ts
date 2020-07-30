@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {BreweryService} from '../../pages/brewery/brewery.service';
-import {BeerService} from '../../pages/beer/beer.service';
+import {BreweryService} from '../../services/brewery.service';
+import {BeerService} from '../../services/beer.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {StyleModel} from '../../models/Style/style.model';
 import {BreweryLocationModel} from '../../models/Brewery/brewery-location.model';
-import {LoadingService} from '../loading/loading.service';
+import {LoadingService} from '../../services/loading.service';
 
 @Component({
     selector: 'app-navbar',

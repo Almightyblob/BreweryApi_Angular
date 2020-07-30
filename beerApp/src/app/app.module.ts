@@ -8,12 +8,12 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {HomeComponent} from './pages/home/home.component';
 import {BeerModule} from './pages/beer/beer.module';
 import {BreweryModule} from './pages/brewery/brewery.module';
-import {BeerService} from './pages/beer/beer.service';
-import {BreweryService} from './pages/brewery/brewery.service';
+import {BeerService} from './services/beer.service';
+import {BreweryService} from './services/brewery.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {LoadingComponent} from './components/loading/loading.component';
-import {LoadingService} from './components/loading/loading.service';
+import {LoadingService} from './services/loading.service';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import {LoadingService} from './components/loading/loading.service';
         AppComponent,
         NavbarComponent,
         HomeComponent,
-        LoadingComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,
