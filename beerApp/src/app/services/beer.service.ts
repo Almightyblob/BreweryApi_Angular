@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, MonoTypeOperatorFunction, of, pipe} from 'rxjs';
 import {BeerResponseModel} from '../models/Beer/beer-response.model';
-import {catchError, finalize, map, tap} from 'rxjs/operators';
+import {finalize, map, tap} from 'rxjs/operators';
 import {BeerModel} from '../models/Beer/beer.model';
 import {SearchDataModel} from '../models/searchData.model';
 import {StylesResponseModel} from '../models/Style/styles-response.model';
@@ -37,8 +37,9 @@ export class BeerService {
     }
 
     transformData = () => pipe(
-            this.extractSearchData(),
+        this.extractSearchData(),
         map(beerResponse => beerResponse.data),
+        tap(beers => this.beers = beers),
         finalize(() => this.loadingService.loadingOff())
     )
 
@@ -47,7 +48,6 @@ export class BeerService {
         this.http.get<BeerResponseModel>(`/api/beers/?key=659d5c6b8f3d2447f090119e48202fdb&name=${keyword}`)
             .pipe(
                 this.transformData(),
-                tap(beers => this.beers = beers),
             ).subscribe(beers => this.beers$.next(beers)
             );
     }
@@ -57,7 +57,6 @@ export class BeerService {
         this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&styleId=${keyword}`)
             .pipe(
                 this.transformData(),
-                tap(beers => this.beers = beers)
             )
             .subscribe(beers => this.beers$.next(beers)
             );
@@ -68,7 +67,6 @@ export class BeerService {
         this.http.get<BeerResponseModel>(`/api/brewery/${breweryId}/beers?key=659d5c6b8f3d2447f090119e48202fdb`)
             .pipe(
                 this.transformData(),
-                tap(beers => this.beers = beers)
             )
             .subscribe(beers => this.beers$.next(beers)
             );
@@ -79,7 +77,6 @@ export class BeerService {
         this.http.get<BeerResponseModel>(`/api/beers?key=659d5c6b8f3d2447f090119e48202fdb&p=${nextPage}`)
             .pipe(
                 this.transformData(),
-                tap(beers => this.beers = beers)
             )
             .subscribe(beers => this.beers$.next(beers)
             );
